@@ -1,0 +1,17 @@
+name: Rest Dev Branch to Master at 2am each day
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 2 * * *"
+jobs:
+  reset:
+    name: Runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reset dev branch to main
+        uses: nicksnell/action-reset-repo@master
+        with:
+          base_branch: main
+          reset_branch: dev
